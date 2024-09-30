@@ -16,6 +16,7 @@ body {
 
 .container {
     width: 800px;
+   
     max-width: 80%;
     background-color: white;
     padding: 10px;
@@ -41,5 +42,10 @@ body {
 }
 
 .btn:hover {
-    
+background-color: pink;
 }
+
+
+h1 {text-align: center;}
+
+
