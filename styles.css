@@ -1,0 +1,19 @@
+*::before, ::after {
+    box-sizing: border-box;
+    font-family: Skandal, Arial, Helvetica, sans-serif;
+}
+
+body {
+    padding: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: gray;
+}
+
+.container {
+    width: 800px;
+}
