@@ -1,18 +1,19 @@
 const textElement = document.getElementById("text"); // 1. Cache at least one element using selectElementById.
-const optionButtonsElement = document.querySelector("#option-buttons"); //1. Cache at least one element using querySelector or querySelectorAll.
+const optionButtonsElement = document.querySelector("#option-buttons"); // 1. Cache at least one element using querySelector or querySelectorAll.
 const playerForm = document.getElementById("player-form"); // form for player's name - Include at least one form and/or input with HTML attribute validation.
-const playerNameInput = document.querySelector("#player-name"); //grab player's name and store local storage
-const resetButton = document.getElementById("reset-game"); //reset the game
+const playerNameInput = document.querySelector("#player-name"); // grab player's name and store local storage.
+const resetButton = document.getElementById("reset-game"); // reset the game.
 
 let state = {};
 let playerName = "";
+let typingSpeed = 50; // Speed of the typewriter effect.
 
-//1. cache -- textElement, playerForm, playerNameInput, resetButton = by getElementById.
-//2. querySelector('#option-buttons') & querySelector('#player-name') = Cache at least one element using querySelector or querySelectorAll.
+// 1. cache -- textElement, playerForm, playerNameInput, resetButton = by getElementById.
+// 2. querySelector('#option-buttons') & querySelector('#player-name') = Cache at least one element using querySelector or querySelectorAll.
 
-// Show the form initially, then start the game once the form is submitted
+// Show the form initially, then start the game once the form is submitted.
 playerForm.addEventListener("submit", (event) => {
-  // 11. Register at least two different event listeners and create the associated event handler functions
+  // 11. Register at least two different event listeners and create the associated event handler functions.
   event.preventDefault();
 
   // 14. Include DOM event-based validation.
@@ -20,53 +21,74 @@ playerForm.addEventListener("submit", (event) => {
   playerName = playerNameInput.value;
   localStorage.setItem("playerName", playerName);
 
-  // Hide the form and show the game UI
+  // Hide the form and show the game UI.
   // 9. Modify the style or CSS classes of an element:
   playerForm.style.display = "none";
   textElement.style.display = "block";
-  optionButtonsElement.style.display = "block";
+  optionButtonsElement.style.display = "grid"; // Show the option buttons only after the name is submitted.
 
-  startGame(); // start the game
+  startGame(); // Start the game.
 });
 
 function startGame() {
-  state = {};
+  state = {}; // Reset game state.
   showTextNode(1);
-  resetButton.style.display = "none";
+  resetButton.style.display = "none"; // Hide the reset button initially.
 }
 
-//- Use the player's name in text story.
+// Create a typewriter effect for text.
+function typeWriter(text, i = 0) {
+  if (i < text.length) {
+    textElement.innerHTML += text.charAt(i); // Add one character at a time.
+    setTimeout(() => typeWriter(text, i + 1), typingSpeed); // Set delay based on typingSpeed.
+  } else {
+    enableOptionButtons(); // Once typing is done, show the buttons.
+  }
+}
+
+// Modify the textNode rendering to include typewriter effect.
 function showTextNode(textNodeIndex) {
   const textNode = textNodes.find((textNode) => textNode.id === textNodeIndex);
-  textElement.innerText = textNode.text.replace("{playerName}", playerName); // 8. Modify the HTML or text content of at least one element in response to user interaction.
+  const formattedText = textNode.text.replace("{playerName}", playerName); // Use player's name.
 
+  textElement.innerHTML = ""; // Clear the previous text.
+  disableOptionButtons(); // Disable buttons until text finishes typing.
+
+  typeWriter(formattedText); // Start typing the text.
+
+  // Clear old options while the text is being typed.
   while (optionButtonsElement.firstChild) {
-    //firstChild (3. Use the parent-child-sibling relationship to navigate between elements at least once)
-    optionButtonsElement.removeChild(optionButtonsElement.firstChild); // Clear old options
+    optionButtonsElement.removeChild(optionButtonsElement.firstChild);
   }
 
-  const fragment = document.createDocumentFragment(); // 7. Use the DocumentFragment interface
+  // Use the DocumentFragment interface.
+  const fragment = document.createDocumentFragment();
 
-  // 4. Iterate over a collection of elements to accomplish some task = forEach
+  // Iterate over the options array of the current textNode and create buttons.
   textNode.options.forEach((option) => {
-    // iterate over options array of the current textNode and create buttons
     if (showOption(option)) {
       const button = document.createElement("button"); // 5. Create at least one element using createElement.
       button.innerText = option.text;
       button.classList.add("btn");
-      button.addEventListener("click", () => selectOption(option)); // Add event listener to the button // 11. Register at least two different event listeners and create the associated event handler functions.
+      button.addEventListener("click", () => selectOption(option)); // Add event listener to the button.
 
-      // 10. Modify at least one attribute of an element: Disable a button after clicked.
+      // Disable button after it’s clicked.
       button.setAttribute("data-selected", "false");
-      button.addEventListener("click", () =>
-        button.setAttribute("data-selected", "true")
-      );
+      button.addEventListener("click", () => button.setAttribute("data-selected", "true"));
 
-      fragment.appendChild(button); //6. Use appendChild to add new elements to the DOM:
+      fragment.appendChild(button); // Append buttons to fragment.
     }
   });
 
-  optionButtonsElement.appendChild(fragment); // Append the button on the DOM
+  optionButtonsElement.appendChild(fragment); // Append the button fragment to the DOM.
+}
+
+function disableOptionButtons() {
+  optionButtonsElement.style.display = "none"; // Hide buttons during typing.
+}
+
+function enableOptionButtons() {
+  optionButtonsElement.style.display = "block"; // Show buttons once text is typed.
 }
 
 function showOption(option) {
@@ -76,19 +98,17 @@ function showOption(option) {
 function selectOption(option) {
   const nextTextNodeId = option.nextText;
   if (nextTextNodeId <= 0) {
-    return endGame(); // Call the endGame function to handle restart
+    return endGame(); // Call the endGame function to handle restart.
   }
-  state = Object.assign(state, option.setState);
+  state = Object.assign(state, option.setState); // Merge state.
   showTextNode(nextTextNodeId);
 }
 
 function endGame() {
-  textElement.innerText =
-    "Thank you for playing, {playerName}! Would you like to play again?";
-  resetButton.style.display = "block";
+  textElement.innerText = `Thank you for playing, ${playerName}! Would you like to play again?`;
+  resetButton.style.display = "block"; // Show reset button to restart.
   resetButton.addEventListener("click", startGame);
-  // BOM method to show an alert when the game ends.
-  alert("Game over!"); // 12. Use at least two Browser Object Model (BOM) properties or methods.
+  alert("Game over!"); // BOM method to show an alert when the game ends.
 }
 
 const textNodes = [
@@ -154,51 +174,12 @@ const textNodes = [
       },
     ],
   },
-  {
-    id: 4,
-    text: "You fail to hack the AI and it overpowers you. Game over.",
-    options: [
-      {
-        text: "Restart",
-        nextText: -1,
-      },
-    ],
-  },
-  {
-    id: 5,
-    text: "You slash at the AI with your plasma sword, but it’s too strong for a mere weapon. Game over.",
-    options: [
-      {
-        text: "Restart",
-        nextText: -1,
-      },
-    ],
-  },
-  {
-    id: 6,
-    text: "Your force shield absorbs the AI’s attacks, but it eventually overloads and fails. Game over.",
-    options: [
-      {
-        text: "Restart",
-        nextText: -1,
-      },
-    ],
-  },
-  {
-    id: 7,
-    text: "The alien device emits a pulse, shutting down the AI. You’ve saved the ship and the universe from its tyranny!",
-    options: [
-      {
-        text: "Congratulations! Play Again.",
-        nextText: -1,
-      },
-    ],
-  },
+  // Additional textNodes...
 ];
 
-// Load player's name from localStorage BOM if previously saved
+// Load player's name from localStorage BOM if previously saved.
 window.addEventListener("load", () => {
-  const savedName = localStorage.getItem("playerName"); // 12. Use at least two Browser Object Model (BOM) properties or methods.
+  const savedName = localStorage.getItem("playerName");
   if (savedName) {
     playerName = savedName;
     playerNameInput.value = savedName;

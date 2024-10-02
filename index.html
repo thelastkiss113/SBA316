@@ -4,21 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400,700&display=swap" rel="stylesheet">
     <script defer src="./script.js"></script>
     <title>Text Adventure Game</title>
 </head>
 <body>
+    <!-- Stationary and twinkling stars -->
+    <div class="star stationary-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star twinkling-star"></div>
+    <div class="star twinkling-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star twinkling-star"></div>
+    <div class="star twinkling-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star twinkling-star"></div>
+    <div class="star twinkling-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star twinkling-star"></div>
+    <div class="star twinkling-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star stationary-star"></div>
+    <div class="star twinkling-star"></div>
+    <div class="star twinkling-star"></div>
+
     <div class="container">
         <h1> Sci-Fi Text Adventure Game</h1>
 
-        <!-- 13. Include at least one form and/or input with HTML attribute validation -->
+        <!-- Include at least one form and/or input with HTML attribute validation -->
+        <form id="player-form">
+            <label for="player-name">Player Name: </label>
+            <input type="text" id="player-name" name="player-name" required>
+            <button type="submit">Start Game</button>
+        </form>
 
-       <form id="player-form">
-        <label for="player-name">Player Name: </label>
-        <input type="text" id="player-name" name="player-name" required>
-        <button type="submit">Start Game</button>
-       </form>
-       
         <div id="text"></div>
         <div id="option-buttons" class="btn-grid">
             <button class="btn">Option 1</button>
@@ -26,7 +53,7 @@
             <button class="btn">Option 3</button>
             <button class="btn">Option 4</button>
         </div>
-        <button id="reset-game" style ="display: none;">Play Again</button>
+        <button id="reset-game" style="display: none;">Play Again</button>
     </div>
 </body>
 </html>

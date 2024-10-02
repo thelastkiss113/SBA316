@@ -1,51 +1,114 @@
-*::before, ::after {
-    box-sizing: border-box;
-    font-family: Skandal, Arial, Helvetica, sans-serif;
-}
 
 body {
-    padding: 0;
-    margin: auto;
+    color: #00FF00; 
+    background-color: black; 
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
     height: 100vh;
-    background-color: gray;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace; 
 }
 
+/* Retro Computer  */
 .container {
-    width: 800px;
-   
-    max-width: 80%;
-    background-color: white;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 2px;
+    background-color: black;
+    color: #00FF00;
+    border: 2px solid #00FF00; 
+    padding: 30px;
+    width: 90%; 
+    max-width: 800px; 
+    margin: 0 auto; 
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); 
+    z-index: 10;
+    border-radius: 10px;
 }
 
-.btn-grid {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 10px;
-    margin-top:  20px;
+
+#option-buttons {
+    display: none;
 }
+
+/* Blinking cursor */
+#text::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+    margin-left: 5px;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
 
 .btn {
-    background-color:hsl(200, 100%, 50%);
-    border: 1px solid hsl(200, 100%, 30%);
-    border-radius: 5px;
-    padding: 5px 10px;
-    color: white;
-    outline: none;
-
+    background-color: black;
+    color: #00FF00;
+    border: 1px solid #00FF00;
+    padding: 10px;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 10px 0;
 }
 
 .btn:hover {
-background-color: pink;
+    background-color: #00FF00;
+    color: black;
 }
 
+/* Typewriter effect */
+#text {
+    white-space: pre-wrap;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    max-height: 300px;
+    overflow-y: auto;
+}
 
-h1 {text-align: center;}
+/* Stationary stars backdrop */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    width: 2px;
+    height: 2px;
+    opacity: 0.8;
+    z-index: 1;
+}
 
+.stationary-star {
+    animation: none; /* Stationary stars do not animate */
+}
 
+/* Randomly place stars on the screen */
+.star:nth-child(1) { top: 20%; left: 40%; }
+.star:nth-child(2) { top: 50%; left: 80%; }
+.star:nth-child(3) { top: 30%; left: 20%; }
+.star:nth-child(4) { top: 45%; left: 95%; }
+.star:nth-child(5) { top: 70%; left: 80%; }
+.star:nth-child(6) { top: 10%; left: 10%; }
+.star:nth-child(7) { top: 80%; left: 50%; }
+.star:nth-child(8) { top: 60%; left: 70%; }
+.star:nth-child(9) { top: 25%; left: 60%; }
+.star:nth-child(10) { top: 40%; left: 10%; }
+.star:nth-child(11) { top: 85%; left: 30%; }
+.star:nth-child(12) { top: 5%; left: 75%; }
+.star:nth-child(13) { top: 15%; left: 55%; }
+.star:nth-child(14) { top: 65%; left: 25%; }
+.star:nth-child(15) { top: 35%; left: 90%; }
+
+/* Twinkling stars */
+.twinkling-star {
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+/* Twinkling effect */
+@keyframes twinkle {
+    0%, 90% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}
