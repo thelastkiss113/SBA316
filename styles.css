@@ -22,22 +22,29 @@ body {
     box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); 
     z-index: 10;
     border-radius: 10px;
+   ;
 }
 
 #option-buttons {
     display: none;
+ 
 }
 
-/* Blinking cursor */
+/* Blinking square cursor */
 #text::after {
-    content: '|';
-    animation: blink 1s step-end infinite;
+    content: ''; 
+    display: inline-block;
+    width: 20px; 
+    height: 30px; 
+    background-color: #00FF00; 
     margin-left: 5px;
+    animation: blink 1s step-end infinite;
 }
 
 @keyframes blink {
-    50% { opacity: 0; }
+    50% { opacity: 0; } 
 }
+
 
 /* Base style for all buttons */
 .btn {
@@ -48,6 +55,7 @@ body {
     cursor: pointer;
     font-family: 'Courier New', Courier, monospace;
     margin: 10px 0;
+    font-size: 18px;
 }
 
 /* Styling for key action texts */
@@ -68,6 +76,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
     max-height: 300px;
     overflow-y: auto;
+    font-size: 30px;
 }
 
 /* Stationary stars backdrop */

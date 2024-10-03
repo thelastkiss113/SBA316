@@ -122,15 +122,15 @@ const textNodes = [
         },
         {
           text: "Ignore: \"Probably just the wind. I'll ignore it.\"",
-          nextText: 3,
+          nextText: 8,
         },
         {
           text: "Call for help: \"Maybe I should call for backup. Just in case.\"",
-          nextText: 4,
+          nextText: 7,
         },
         {
           text: "Hide: \"I'm not sure if I want to face whatever's in there.\"",
-          nextText: 5,
+          nextText: 8,
         },
       ],
     },
@@ -140,249 +140,129 @@ const textNodes = [
       options: [
         {
           text: "Scream: \"AAAAAHHHHH! What the heck is that?!\"",
-          nextText: 6,
+          nextText: 99,  // You die 
         },
         {
           text: "Talk: \"Hello? Can you understand me?\"",
-          nextText: 7,
+          nextText: 3,
         },
         {
           text: "Attack: \"I'm not taking any chances. Here's a wrench!\"",
-          nextText: 8,
+          nextText: 99,  // You die 
         },
         {
           text: "Befriend: \"Hey there, little guy. Want a snack?\"",
-          nextText: 9,
+          nextText: 4,
+        },
+      ],
+    },
+    {
+      id: 3,
+      text: "The alien makes strange sounds, but you don't understand it. You feel uneasy...",
+      options: [
+        {
+          text: "Keep talking: \"We need to communicate. Let me try again.\"",
+          nextText: 99,  // You die 
+        },
+        {
+          text: "Step back slowly: \"I think I need to give it some space...\"",
+          nextText: 5,
+        },
+      ],
+    },
+    {
+      id: 4,
+      text: "The alien takes the food and seems to calm down.",
+      options: [
+        {
+          text: "Ask questions: \"Where are you from? What are you doing here?\"",
+          nextText: 10,  // End game
+        },
+        {
+          text: "Leave: \"I think I've had enough excitement for one day.\"",
+          nextText: 5,
+        },
+      ],
+    },
+    {
+      id: 5,
+      text: "You leave the cargo hold. The alien stays behind. You continue your journey alone.",
+      options: [
+        {
+          text: "The End.",
+          nextText: -1,  // End game
+        },
+      ],
+    },
+    {
+      id: 6,
+      text: "You encounter a black hole and get sucked in. It seems there's no escape.",
+      options: [
+        {
+          text: "The End.",
+          nextText: -1,  // End game
+        },
+      ],
+    },
+    {
+      id: 7,
+      text: "You call for backup, but nobody responds. You hear a noise approaching...",
+      options: [
+        {
+          text: "Investigate the noise.",
+          nextText: 99,  // You die 
+        },
+        {
+          text: "Hide until it passes.",
+          nextText: 5,
+        },
+      ],
+    },
+    {
+      id: 8,
+      text: "You decide to stay where you are. Nothing happens for a while. Maybe it was just your imagination.",
+      options: [
+        {
+          text: "Go check the noise.",
+          nextText: 2,
+        },
+        {
+          text: "Stay put.",
+          nextText: 5,
         },
       ],
     },
     {
       id: 9,
-      text: "The alien takes the food and seems to calm down.",
+      text: "You decide to explore the ship's control room, but the ship malfunctions.",
       options: [
         {
-          text: "Ask questions: \"Where are you from? What are you doing here?\"",
-          nextText: 10,
-        },
-        {
-          text: "Play: \"Let's play tag! I'll be the spaceship, and you can be the little green guy.\"",
-          nextText: 11,
-        },
-        {
-          text: "Give more food: \"Here's some more. You look hungry.\"",
-          nextText: 12,
-        },
-        {
-          text: "Leave: \"I think I've had enough excitement for one day.\"",
-          nextText: 13,
+          text: "The End.",
+          nextText: -1,  // End game
         },
       ],
     },
     {
       id: 10,
-      text: "The alien communicates using a strange language, but you can understand some of it.",
+      text: "The alien communicates back, and you learn about its home planet. You forge an alliance.",
       options: [
         {
-          text: "Ask about its home: \"So, where do you come from? A planet of green aliens?\"",
-          nextText: 14,
-        },
-        {
-          text: "Ask about its purpose: \"What are you doing on this ship? Are you lost?\"",
-          nextText: 15,
-        },
-        {
-          text: "Ask about its friends: \"Do you have any friends back home? Or are you alone?\"",
-          nextText: 16,
-        },
-        {
-          text: "Offer to help: \"Hey, I could help you. If you need it.\"",
-          nextText: 17,
+          text: "Celebrate your new friendship.",
+          nextText: -1,  // End game
         },
       ],
     },
     {
-      id: 17,
-      text: "The alien seems interested in your offer.",
+      id: 99,
+      text: " A long tentacle wraps around your body and the creature opens its mouth to reveal many jagged teeth. Your life flashes before your eyes. You die.", // You die
       options: [
         {
-          text: "Help it find its way home: \"Let's get you back to your planet. We can fix this ship.\"",
-          nextText: 18,
-        },
-        {
-          text: "Help it fix the ship: \"I'm a bit of a mechanic. Maybe I can help you fix this thing.\"",
-          nextText: 19,
-        },
-        {
-          text: "Help it learn about humans: \"I can teach you about Earth. We're pretty cool, actually.\"",
-          nextText: 20,
-        },
-        {
-          text: "Just be friends: \"Hey, we could just be friends. You seem like a good guy.\"",
-          nextText: 21,
+          text: "Restart", //Restart Game
+          nextText: 1,  
         },
       ],
-    },
-    {
-      id: 18,
-      text: "The alien agrees to your plan.",
-      options: [
-        {
-          text: "Fix the ship: \"Let's get to work. We've got a long journey ahead.\"",
-          nextText: 22,
-        },
-        {
-          text: "Find a map: \"Maybe there's a map somewhere on this ship.\"",
-          nextText: 23,
-        },
-        {
-          text: "Contact someone: \"We should try to contact someone. Maybe they can help.\"",
-          nextText: 24,
-        },
-        {
-          text: "Wait for rescue: \"Maybe someone will find us. We just have to wait.\"",
-          nextText: 25,
-        },
-      ],
-    },
-    {
-      id: 22,
-      text: "You find a toolkit and start working on the ship.",
-      options: [
-        {
-          text: "Fix the power system: \"If we can get the power working, we might be able to fix the ship.\"",
-          nextText: 26,
-        },
-        {
-          text: "Repair the navigation system: \"We need to find out where we are. Can you help me with this?\"",
-          nextText: 27,
-        },
-        {
-          text: "Check the life support: \"We need to make sure we have enough air. Let's check the life support.\"",
-          nextText: 28,
-        },
-        {
-          text: "Wait for help: \"Maybe we should just wait for someone to find us.\"",
-          nextText: 29,
-        },
-      ],
-    },
-    {
-      id: 26,
-      text: "You successfully repair the power system.",
-      options: [
-        {
-          text: "Try the navigation system: \"Let's see if this thing is working now.\"",
-          nextText: 27,
-        },
-        {
-          text: "Check the life support: \"Just to be sure, let's check the life support.\"",
-          nextText: 28,
-        },
-        {
-          text: "Contact someone: \"We should try to contact someone. Maybe they can help.\"",
-          nextText: 24,
-        },
-        {
-          text: "Wait for rescue: \"Maybe we should just wait for someone to find us.\"",
-          nextText: 25,
-        },
-      ],
-    },
-    {
-      id: 27,
-      text: "The navigation system is still broken.",
-      options: [
-        {
-          text: "Repair the navigation system: \"We've got to fix this thing. Any ideas?\"",
-          nextText: 30,
-        },
-        {
-          text: "Check the life support: \"Just to be sure, let's check the life support.\"",
-          nextText: 28,
-        },
-        {
-          text: "Contact someone: \"We should try to contact someone. Maybe they can help.\"",
-          nextText: 24,
-        },
-        {
-          text: "Wait for rescue: \"Maybe we should just wait for someone to find us.\"",
-          nextText: 25,
-        },
-      ],
-    },
-    {
-      id: 30,
-      text: "You successfully repair the navigation system.",
-      options: [
-        {
-          text: "Contact someone: \"Let's try to contact someone. We might be able to get help.\"",
-          nextText: 24,
-        },
-        {
-          text: "Wait for rescue: \"Maybe we should just wait for someone to find us.\"",
-          nextText: 25,
-        },
-      ],
-    },
-    {
-      id: 24,
-      text: "You manage to contact another ship.",
-      options: [
-        {
-          text: "Ask for help: \"We're in trouble. Can you help us?\"",
-          nextText: 31,
-        },
-        {
-          text: "Wait for a response: \"Hopefully, they'll answer soon.\"",
-          nextText: 32,
-        },
-      ],
-    },
-    {
-      id: 31,
-      text: "The other ship agrees to help.",
-      options: [
-        {
-          text: "Wait for rescue: \"Now we just have to wait for them to get here.\"",
-          nextText: 25,
-        },
-      ],
-    },
-    {
-      id: 25,
-      text: "The other ship arrives and rescues you and the alien.",
-      options: [
-        {
-          text: "Celebrate: \"We did it! We're safe!\"",
-          nextText: 33,
-        },
-        {
-          text: "Say goodbye: \"Thanks for everything. It was fun.\"",
-          nextText: 34,
-        },
-        {
-          text: "Continue your adventure: \"Hey, maybe we could go on another adventure together.\"",
-          nextText: 35,
-        },
-      ],
-    },
-    {
-      id: 33,
-      text: "You and the alien celebrate your successful escape!",
-      options: [],
-    },
-    {
-      id: 34,
-      text: "You say goodbye to the alien and part ways, grateful for the adventure.",
-      options: [],
-    },
-    {
-      id: 35,
-      text: "You decide to go on another adventure together with the alien.",
-      options: [],
     },
   ];
-  
 
 // Load player's name from localStorage BOM if previously saved.
 window.addEventListener("load", () => {
@@ -392,3 +272,17 @@ window.addEventListener("load", () => {
     playerNameInput.value = savedName;
   }
 });
+
+//* * * * Stars * * * 
+function createStars(numStars) {
+    const starContainer = document.body;
+    for (let i = 0; i < numStars; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.top = `${Math.random() * 100}vh`;
+        starContainer.appendChild(star);
+    }
+}
+
+createStars(50);
