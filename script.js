@@ -4,7 +4,7 @@ const playerForm = document.getElementById("player-form"); // form for player's 
 const playerNameInput = document.querySelector("#player-name"); // grab player's name and store local storage.
 const resetButton = document.getElementById("reset-game"); // reset the game.
 
-let state = {};
+let state = {}; //current state of the game
 let playerName = "";
 let typingSpeed = 50; // Speed of the typewriter effect.
 
